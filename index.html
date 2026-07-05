@@ -737,7 +737,7 @@ function catEligible(cat){ return WEAPONS[cat].filter(passesDLC); }
 function buildCats(){
   catsEl.innerHTML = '';
   const sel = selectedSet();
-  Object.keys(WEAPONS).forEach(cat => {
+  Object.keys(WEAPONS).sort((a, b) => a.localeCompare(b)).forEach(cat => {
     const eligible = catEligible(cat);
     const total = eligible.length;
     const remaining = eligible.filter(n => state.used[n] === undefined).length;
