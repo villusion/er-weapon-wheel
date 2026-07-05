@@ -101,7 +101,7 @@ Feature ideas are welcome via the in-app "Request a feature" button.
 
 ## License
 
-[MIT](#license) © 2026 gomatic. Free to copy, modify, and reuse — please keep
+[MIT](#license) © 2026 villusion. Free to copy, modify, and reuse — please keep
 the donate button intact if you publish a copy. Full license text is in the
 comment at the top of `index.html`.
 
