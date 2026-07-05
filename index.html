@@ -662,6 +662,7 @@ const passesDLC = name => state.includeDLC || !isDLC(name);
 /* ---------- Persistent state ---------- */
 let state = {
   used: {},           // name -> tier ('unranked' | 'S'..'F')
+  order: [],          // display order of used weapons (lets you sort within a tier)
   selected: [],       // selected category names
   includeDLC: true    // include Shadow of the Erdtree weapons
 };
@@ -673,6 +674,7 @@ function load(){
       const parsed = JSON.parse(raw);
       if (parsed && typeof parsed === 'object'){
         state.used = parsed.used && typeof parsed.used === 'object' ? parsed.used : {};
+        state.order = Array.isArray(parsed.order) ? parsed.order : [];
         state.selected = Array.isArray(parsed.selected) ? parsed.selected : [];
         state.includeDLC = parsed.includeDLC !== false; // default true
       }
@@ -682,7 +684,14 @@ function load(){
   state.selected = state.selected.filter(c => WEAPONS[c]);
   if (state.selected.length === 0) state.selected = Object.keys(WEAPONS);
 }
+// Keep the display order in step with the used set: drop returned weapons, append new ones.
+function syncOrder(){
+  if (!Array.isArray(state.order)) state.order = [];
+  state.order = state.order.filter(n => state.used[n] !== undefined);
+  Object.keys(state.used).forEach(n => { if (!state.order.includes(n)) state.order.push(n); });
+}
 function save(){
+  syncOrder();
   try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){}
 }
 
@@ -985,14 +994,18 @@ function makeChip(name){
     e.dataTransfer.setData('text/plain', name);
     e.dataTransfer.effectAllowed = 'move';
   });
-  chip.addEventListener('dragend', () => chip.classList.remove('dragging'));
+  chip.addEventListener('dragend', () => {
+    chip.classList.remove('dragging');
+    document.querySelectorAll('.dropzone.over').forEach(z => z.classList.remove('over'));
+    commitBoard();
+  });
   return chip;
 }
 
 function renderLedger(){
-  const usedNames = Object.keys(state.used);
+  syncOrder();
   document.querySelectorAll('.dropzone').forEach(z => z.innerHTML = '');
-  usedNames.forEach(name => {
+  state.order.forEach(name => {
     const tier = state.used[name];
     const zone = tier === 'unranked'
       ? unrankedZone
@@ -1000,7 +1013,7 @@ function renderLedger(){
     zone.appendChild(makeChip(name));
   });
   const total = ALL_NAMES.filter(passesDLC).length;
-  const done = usedNames.filter(passesDLC).length;
+  const done = Object.keys(state.used).filter(passesDLC).length;
   const pct = total ? Math.round(done/total*100) : 0;
   const scope = state.includeDLC ? '' : ' (base game)';
   progressText.textContent = done === 0
@@ -1009,26 +1022,50 @@ function renderLedger(){
   progressFill.style.width = pct + '%';
 }
 
-/* ---------- Drag & drop wiring (event delegation) ---------- */
-document.addEventListener('dragover', e => {
-  const zone = e.target.closest && e.target.closest('.dropzone');
-  if (zone){ e.preventDefault(); e.dataTransfer.dropEffect='move'; zone.classList.add('over'); }
-});
-document.addEventListener('dragleave', e => {
-  const zone = e.target.closest && e.target.closest('.dropzone');
-  if (zone && !zone.contains(e.relatedTarget)) zone.classList.remove('over');
-});
-document.addEventListener('drop', e => {
-  const zone = e.target.closest && e.target.closest('.dropzone');
-  if (!zone) return;
-  e.preventDefault();
-  zone.classList.remove('over');
-  const name = e.dataTransfer.getData('text/plain');
-  if (!name || state.used[name] === undefined) return;
-  state.used[name] = zone.dataset.tier;
+/* ---------- Drag & drop: move between tiers AND reorder within a tier ---------- */
+// Wrap-aware: which chip should the dragged one be inserted before, given the pointer?
+function dragAfter(zone, x, y){
+  let target = null, bestRow = Infinity, bestX = Infinity;
+  zone.querySelectorAll('.chip:not(.dragging)').forEach(el => {
+    const r = el.getBoundingClientRect();
+    const cx = r.left + r.width / 2;
+    const precedes = (y < r.top - 2) ? true : (y <= r.bottom + 2 && x < cx);
+    if (precedes){
+      const row = Math.round(r.top);
+      if (row < bestRow || (row === bestRow && cx < bestX)){ bestRow = row; bestX = cx; target = el; }
+    }
+  });
+  return target; // null => append to end of the zone
+}
+// After a drag, read tiers + order straight back out of the DOM.
+function commitBoard(){
+  const order = [];
+  document.querySelectorAll('.dropzone').forEach(zone => {
+    const tier = zone.dataset.tier;
+    zone.querySelectorAll('.chip').forEach(chip => {
+      state.used[chip.dataset.name] = tier;
+      order.push(chip.dataset.name);
+    });
+  });
+  state.order = order;
   save();
-  renderLedger();
+}
+document.addEventListener('dragover', e => {
+  const dragging = document.querySelector('.chip.dragging');
+  const zone = e.target.closest && e.target.closest('.dropzone');
+  if (!dragging || !zone) return;
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'move';
+  document.querySelectorAll('.dropzone.over').forEach(z => { if (z !== zone) z.classList.remove('over'); });
+  zone.classList.add('over');
+  const after = dragAfter(zone, e.clientX, e.clientY);
+  if (after == null){
+    if (zone.lastElementChild !== dragging) zone.appendChild(dragging);
+  } else if (after !== dragging && after !== dragging.nextSibling){
+    zone.insertBefore(dragging, after);
+  }
 });
+document.addEventListener('drop', e => { if (document.querySelector('.chip.dragging')) e.preventDefault(); });
 
 /* ---------- Export / Import / Reset ---------- */
 document.getElementById('exportBtn').addEventListener('click', () => {
@@ -1051,6 +1088,7 @@ importFile.addEventListener('change', () => {
     try{
       const parsed = JSON.parse(reader.result);
       state.used = (parsed && typeof parsed.used === 'object') ? parsed.used : {};
+      state.order = Array.isArray(parsed.order) ? parsed.order : [];
       state.selected = Array.isArray(parsed.selected) ? parsed.selected : Object.keys(WEAPONS);
       state.includeDLC = parsed.includeDLC !== false;
       Object.keys(state.used).forEach(n => { if (!weaponCat.has(n)) delete state.used[n]; });
@@ -1065,7 +1103,7 @@ importFile.addEventListener('change', () => {
 });
 document.getElementById('resetBtn').addEventListener('click', () => {
   if (!confirm('Reset the entire run? This clears all retired weapons and tier rankings.')) return;
-  state.used = {};
+  state.used = {}; state.order = [];
   save(); buildCats(); refreshWheelState(); renderLedger();
   resultEl.classList.remove('show');
   toast('Run reset.');
