@@ -78,13 +78,16 @@ Everything runs client-side in a single file:
 
 ## Deploying
 
-This site is published with **GitHub Pages** as a project site at
-`https://villusion.github.io/er-weapon-wheel/`. Push to the `er-weapon-wheel`
-repo, then enable **Settings → Pages → Source: Deploy from branch → `main` /
-`root`**.
+This site is published to **GitHub Pages** at
+`https://villusion.github.io/er-weapon-wheel/` via GitHub Actions. In the repo,
+set **Settings → Pages → Source → GitHub Actions** once. After that, every push
+to `main` runs `.github/workflows/deploy.yml`, which uploads the repository and
+deploys it — no branch build needed. You can also trigger it manually from the
+**Actions** tab.
 
 Supporting files included for Pages:
 
+- `.github/workflows/deploy.yml` — the GitHub Actions deploy workflow
 - `.nojekyll` — serve files as-is (skip the Jekyll build step)
 - `robots.txt` — allow crawlers and point to the sitemap
 - `sitemap.xml` — the canonical URL for search engines
