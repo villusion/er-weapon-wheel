@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  Grace of the Wheel — Elden Ring All-Weapons Run companion
+  Copyright (c) 2026 gomatic
+  ----------------------------------------------------------------------------
+  Licensed under the MIT License (below). You are free to copy, modify and
+  reuse this single HTML file for your own use — personal or commercial —
+  as long as the copyright and permission notice below are kept.
+
+  Friendly request (NOT a legal condition of the license): if you publish or
+  share a copy, please leave the "Buy me a coffee" donate button in place so
+  the original author's support link travels with the work. Thank you! ✦
+  ----------------------------------------------------------------------------
+  MIT License
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+  ============================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grace of the Wheel — Elden Ring Random Weapon Roller</title>
+
+<!-- ============================ SEO / social ============================
+     Canonical/social URLs point at GitHub Pages for this repo. If you move
+     the site, update every occurrence of the URL below (canonical, og:url,
+     og:image, twitter:image, and the JSON-LD "url").
+     URL: https://villusion.github.io/er-weapon-wheel/
+     ===================================================================== -->
+<meta name="description" content="Free Elden Ring random weapon roller for all-weapons runs — spin any weapon categories, retire each as you clear it, and build a tier list. All 402 weapons.">
+<meta name="author" content="gomatic">
+<meta name="theme-color" content="#0a0806">
+<meta name="color-scheme" content="dark">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://villusion.github.io/er-weapon-wheel/">
+
+<!-- Open Graph (Facebook, Discord, LinkedIn, …) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Grace of the Wheel">
+<meta property="og:title" content="Grace of the Wheel — Elden Ring Random Weapon Roller">
+<meta property="og:description" content="Free Elden Ring random weapon roller for all-weapons runs — spin any weapon categories, retire each as you clear it, and build a tier list. All 402 weapons.">
+<meta property="og:url" content="https://villusion.github.io/er-weapon-wheel/">
+<meta property="og:image" content="https://villusion.github.io/er-weapon-wheel/wheel-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Grace of the Wheel — a golden spin-wheel emblem for Elden Ring all-weapons runs">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Grace of the Wheel — Elden Ring Random Weapon Roller">
+<meta name="twitter:description" content="Free Elden Ring random weapon roller for all-weapons runs — spin any weapon categories, retire each as you clear it, and build a tier list. All 402 weapons.">
+<meta name="twitter:image" content="https://villusion.github.io/er-weapon-wheel/wheel-og.png">
+
+<!-- Structured data: helps search engines understand the app -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Grace of the Wheel",
+  "url": "https://villusion.github.io/er-weapon-wheel/",
+  "description": "Free Elden Ring random weapon roller for all-weapons runs — spin any weapon categories, retire each as you clear it, and build a tier list. All 402 weapons.",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Any (modern web browser)",
+  "browserRequirements": "Requires JavaScript",
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "about": { "@type": "VideoGame", "name": "Elden Ring" },
+  "author": { "@type": "Person", "name": "gomatic" },
+  "image": "https://villusion.github.io/er-weapon-wheel/wheel-og.png"
+}
+</script>
+<!-- Favicon: golden wheel emblem, inlined so this file stays self-contained.
+     Crisp SVG for modern browsers, PNG fallback for older ones. The matching
+     wheel-512.png / wheel-180.png files (delivered alongside) are used for
+     the Buy Me a Coffee profile picture and iOS home-screen icon. -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImJnIiBjeD0iNTAlIiBjeT0iNDIlIiByPSI2NSUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWExMjA2Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTUlIiBzdG9wLWNvbG9yPSIjMGQwYTA2Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA3MDUwNCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iZ2xvdyIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNTAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0icmdiYSgyNDAsMjE3LDEzOCwwLjQ1KSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0icmdiYSgyMDEsMTYyLDM5LDAuMTApIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0icmdiYSgyMDEsMTYyLDM5LDApIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJyaW0iIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y2ZTZhOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iI2M5YTIyNyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM3YTVmMTgiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNwb2tlIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNlOWQzOGEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjOGE2ZDFmIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPHJhZGlhbEdyYWRpZW50IGlkPSJnZW0iIGN4PSIzOCUiIGN5PSIzMiUiIHI9Ijc1JSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmZmY2ZDgiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIzNSUiIHN0b3AtY29sb3I9IiNmMGQ5OGEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI3MCUiIHN0b3AtY29sb3I9IiNjOWEyMjciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNmU1MzE2Ii8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJwdHIiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZjJjNCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjOWEyMjciLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgoKICA8IS0tIHNxdWFyZSBiYWNrZ3JvdW5kIHNvIGZhdmljb24gY29ybmVycyBsb29rIGludGVudGlvbmFsIC0tPgogIDxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiBmaWxsPSJ1cmwoI2JnKSIvPgogIDxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjQwIiBmaWxsPSJ1cmwoI2dsb3cpIi8+CgogIDwhLS0gd2hlZWwgZGlzYyAtLT4KICA8Y2lyY2xlIGN4PSIyNTYiIGN5PSIyNTYiIHI9IjE5NiIgZmlsbD0iIzE4MTEwOSIgc3Ryb2tlPSIjMmEyMDEwIiBzdHJva2Utd2lkdGg9IjQiLz4KICA8cGF0aCBkPSJNMjU2IDI1NiBMMTgwLjk5IDc0LjkyIEExOTYgMTk2IDAgMCAxIDMzMS4wMSA3NC45MiBaIiBmaWxsPSIjMjAxODBkIi8+CjxwYXRoIGQ9Ik0yNTYgMjU2IEwzMzEuMDEgNzQuOTIgQTE5NiAxOTYgMCAwIDEgNDM3LjA4IDE4MC45OSBaIiBmaWxsPSIjMmMxZjBmIi8+CjxwYXRoIGQ9Ik0yNTYgMjU2IEw0MzcuMDggMTgwLjk5IEExOTYgMTk2IDAgMCAxIDQzNy4wOCAzMzEuMDEgWiIgZmlsbD0iIzIwMTgwZCIvPgo8cGF0aCBkPSJNMjU2IDI1NiBMNDM3LjA4IDMzMS4wMSBBMTk2IDE5NiAwIDAgMSAzMzEuMDEgNDM3LjA4IFoiIGZpbGw9IiMyYzFmMGYiLz4KPHBhdGggZD0iTTI1NiAyNTYgTDMzMS4wMSA0MzcuMDggQTE5NiAxOTYgMCAwIDEgMTgwLjk5IDQzNy4wOCBaIiBmaWxsPSIjMjAxODBkIi8+CjxwYXRoIGQ9Ik0yNTYgMjU2IEwxODAuOTkgNDM3LjA4IEExOTYgMTk2IDAgMCAxIDc0LjkyIDMzMS4wMSBaIiBmaWxsPSIjMmMxZjBmIi8+CjxwYXRoIGQ9Ik0yNTYgMjU2IEw3NC45MiAzMzEuMDEgQTE5NiAxOTYgMCAwIDEgNzQuOTIgMTgwLjk5IFoiIGZpbGw9IiMyMDE4MGQiLz4KPHBhdGggZD0iTTI1NiAyNTYgTDc0LjkyIDE4MC45OSBBMTk2IDE5NiAwIDAgMSAxODAuOTkgNzQuOTIgWiIgZmlsbD0iIzJjMWYwZiIvPgoKICA8bGluZSB4MT0iMjU2IiB5MT0iMjU2IiB4Mj0iMTgzLjI5IiB5Mj0iODAuNDYiIHN0cm9rZT0idXJsKCNzcG9rZSkiIHN0cm9rZS13aWR0aD0iNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxsaW5lIHgxPSIyNTYiIHkxPSIyNTYiIHgyPSIzMjguNzEiIHkyPSI4MC40NiIgc3Ryb2tlPSJ1cmwoI3Nwb2tlKSIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGxpbmUgeDE9IjI1NiIgeTE9IjI1NiIgeDI9IjQzMS41NCIgeTI9IjE4My4yOSIgc3Ryb2tlPSJ1cmwoI3Nwb2tlKSIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGxpbmUgeDE9IjI1NiIgeTE9IjI1NiIgeDI9IjQzMS41NCIgeTI9IjMyOC43MSIgc3Ryb2tlPSJ1cmwoI3Nwb2tlKSIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGxpbmUgeDE9IjI1NiIgeTE9IjI1NiIgeDI9IjMyOC43MSIgeTI9IjQzMS41NCIgc3Ryb2tlPSJ1cmwoI3Nwb2tlKSIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGxpbmUgeDE9IjI1NiIgeTE9IjI1NiIgeDI9IjE4My4yOSIgeTI9IjQzMS41NCIgc3Ryb2tlPSJ1cmwoI3Nwb2tlKSIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGxpbmUgeDE9IjI1NiIgeTE9IjI1NiIgeDI9IjgwLjQ2IiB5Mj0iMzI4LjcxIiBzdHJva2U9InVybCgjc3Bva2UpIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8bGluZSB4MT0iMjU2IiB5MT0iMjU2IiB4Mj0iODAuNDYiIHkyPSIxODMuMjkiIHN0cm9rZT0idXJsKCNzcG9rZSkiIHN0cm9rZS13aWR0aD0iNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CgoKICA8IS0tIG91dGVyIHJpbXMgLS0+CiAgPGNpcmNsZSBjeD0iMjU2IiBjeT0iMjU2IiByPSIxOTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNyaW0pIiBzdHJva2Utd2lkdGg9IjE0Ii8+CiAgPGNpcmNsZSBjeD0iMjU2IiBjeT0iMjU2IiByPSIxODMiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjQ0LDIwNiwwLjM1KSIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPGNpcmNsZSBjeD0iMjU2IiBjeT0iMjU2IiByPSIyMDYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI0MWEwYyIgc3Ryb2tlLXdpZHRoPSI2Ii8+CgogIDwhLS0gdG9wIHBvaW50ZXIgLS0+CiAgPHBhdGggZD0iTTI1NiAyNiBMMjkyIDkyIEwyMjAgOTIgWiIgZmlsbD0idXJsKCNwdHIpIiBzdHJva2U9IiMyNDFhMGMiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgoKICA8IS0tIGNlbnRlciBodWIgZ2VtIC0tPgogIDxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iNzAiIGZpbGw9IiMyNDFhMGMiLz4KICA8Y2lyY2xlIGN4PSIyNTYiIGN5PSIyNTYiIHI9IjYwIiBmaWxsPSJ1cmwoI2dlbSkiIHN0cm9rZT0iIzZlNTMxNiIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPGNpcmNsZSBjeD0iMjQyIiBjeT0iMjQwIiByPSIxNiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjU1KSIvPgo8L3N2Zz4=">
+<link rel="alternate icon" type="image/png" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="wheel-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#0a0806;
+    --panel:#15100a;
+    --panel-edge:#3a2f1a;
+    --gold:#c9a227;
+    --gold-bright:#f0d98a;
+    --gold-deep:#8a6d1f;
+    --ash:#9a8a5f;
+    --ash-dim:#6b6046;
+    --ember:#8f3b1c;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+
+  body{
+    font-family:'Cormorant Garamond',serif;
+    background:
+      radial-gradient(120% 80% at 50% 8%, rgba(201,162,39,0.10), transparent 55%),
+      radial-gradient(140% 100% at 50% 120%, rgba(143,59,28,0.06), transparent 60%),
+      var(--void);
+    color:var(--ash);
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:clamp(1.5rem,4vw,3.5rem) 1.25rem 4rem;
+  }
+
+  .eyebrow{
+    font-family:'Cinzel',serif;
+    letter-spacing:0.5em;
+    text-transform:uppercase;
+    font-size:0.62rem;
+    color:var(--gold-deep);
+    text-indent:0.5em;
+  }
+
+  h1{
+    font-family:'Cinzel',serif;
+    font-weight:600;
+    font-size:clamp(1.9rem,5vw,3.1rem);
+    color:var(--gold-bright);
+    letter-spacing:0.04em;
+    text-align:center;
+    margin:0.45rem 0 0.2rem;
+    text-shadow:0 0 26px rgba(201,162,39,0.28);
+  }
+
+  .subtitle{
+    font-size:1.02rem;
+    font-style:italic;
+    color:var(--ash-dim);
+    text-align:center;
+    max-width:38ch;
+    line-height:1.35;
+  }
+
+  .rule{
+    width:min(420px,80%);
+    height:1px;
+    margin:1.5rem 0 2rem;
+    background:linear-gradient(90deg,transparent,var(--panel-edge) 20%,var(--gold-deep) 50%,var(--panel-edge) 80%,transparent);
+  }
+
+  .stage{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(280px,340px);
+    gap:clamp(1.5rem,4vw,3rem);
+    align-items:start;
+    width:100%;
+    max-width:960px;
+  }
+
+  /* ---- Wheel ---- */
+  .wheel-wrap{
+    position:relative;
+    aspect-ratio:1;
+    width:100%;
+    max-width:460px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  canvas{width:100%;height:100%;display:block;filter:drop-shadow(0 0 30px rgba(0,0,0,0.6))}
+
+  .pointer{
+    position:absolute;
+    top:-6px;left:50%;
+    transform:translateX(-50%);
+    width:0;height:0;
+    border-left:15px solid transparent;
+    border-right:15px solid transparent;
+    border-top:26px solid var(--gold-bright);
+    filter:drop-shadow(0 3px 3px rgba(0,0,0,0.7));
+    z-index:3;
+  }
+  .hub{
+    position:absolute;top:50%;left:50%;
+    width:58px;height:58px;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,#efe0a8,var(--gold) 45%,var(--gold-deep) 75%,#2a2010);
+    border:2px solid #2a2010;
+    box-shadow:0 0 22px rgba(201,162,39,0.5),inset 0 0 10px rgba(0,0,0,0.5);
+    z-index:2;
+    cursor:pointer;
+    transition:transform .15s ease;
+  }
+  .hub:hover{transform:translate(-50%,-50%) scale(1.06)}
+  .hub:active{transform:translate(-50%,-50%) scale(0.97)}
+  .hub:disabled{cursor:not-allowed;filter:grayscale(0.6) brightness(0.7)}
+  .hub::after{
+    content:'';position:absolute;inset:0;border-radius:50%;
+    background:repeating-conic-gradient(from 0deg,transparent 0 22deg,rgba(255,255,255,0.14) 22deg 24deg);
+  }
+  .glow{
+    position:absolute;inset:-12%;border-radius:50%;pointer-events:none;
+    background:radial-gradient(circle,rgba(240,217,138,0.35),transparent 62%);
+    opacity:0;transition:opacity .6s ease;z-index:1;
+  }
+  .wheel-wrap.landed .glow{opacity:1}
+  .empty-note{
+    position:absolute;inset:14%;border-radius:50%;
+    display:none;align-items:center;justify-content:center;text-align:center;
+    padding:2rem;font-style:italic;color:var(--ash-dim);font-size:1.05rem;
+    background:radial-gradient(circle,rgba(10,8,6,0.85),rgba(10,8,6,0.4));
+    z-index:2;pointer-events:none;line-height:1.4;
+  }
+  .wheel-wrap.empty .empty-note{display:flex}
+
+  /* ---- Controls ---- */
+  .controls{
+    background:linear-gradient(180deg,rgba(30,23,13,0.9),rgba(16,12,8,0.9));
+    border:1px solid var(--panel-edge);
+    border-radius:2px;
+    padding:1.4rem 1.3rem 1.6rem;
+    box-shadow:0 0 0 1px rgba(0,0,0,0.4),0 18px 40px rgba(0,0,0,0.5);
+  }
+  .panel-head{
+    display:flex;align-items:baseline;justify-content:space-between;gap:0.5rem;
+    margin-bottom:0.85rem;padding-bottom:0.6rem;border-bottom:1px solid var(--panel-edge);
+  }
+  .panel-head h2{
+    font-family:'Cinzel',serif;font-size:0.72rem;font-weight:600;
+    letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);
+  }
+  /* ---- Group quick-filters ---- */
+  .groupfilters{
+    display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1rem;
+  }
+  .gf{
+    display:inline-flex;align-items:center;gap:0.4rem;cursor:pointer;
+    font-family:'Cinzel',serif;font-size:0.6rem;font-weight:600;letter-spacing:0.1em;
+    text-transform:uppercase;color:var(--ash);
+    padding:0.4rem 0.6rem;border:1px solid var(--panel-edge);border-radius:2px;
+    background:rgba(201,162,39,0.04);transition:color .15s,border-color .15s,background .15s;
+    user-select:none;
+  }
+  .gf:hover{color:var(--gold-bright);border-color:var(--gold-deep)}
+  .gf .box{
+    width:14px;height:14px;flex:0 0 auto;border-radius:3px;position:relative;
+    border:1.5px solid var(--gold-deep);transition:border-color .15s,background .15s;
+  }
+  .gf[data-state="all"]{color:var(--gold-bright);border-color:var(--gold-deep);background:rgba(240,217,138,0.1)}
+  .gf[data-state="all"] .box{border-color:var(--gold-bright);background:rgba(240,217,138,0.12)}
+  .gf[data-state="all"] .box::after{content:'';position:absolute;left:3px;top:-0.5px;
+    width:5px;height:9px;border:solid var(--gold-bright);border-width:0 2px 2px 0;transform:rotate(45deg)}
+  .gf[data-state="some"] .box{border-color:var(--gold-bright)}
+  .gf[data-state="some"] .box::after{content:'';position:absolute;left:2px;top:5px;
+    width:8px;height:0;border-top:2px solid var(--gold-bright)}
+  .mini-links{display:flex;gap:0.65rem}
+  .mini-link{
+    font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.14em;
+    text-transform:uppercase;color:var(--gold-deep);background:none;border:none;
+    cursor:pointer;padding:0;transition:color .15s;
+  }
+  .mini-link:hover{color:var(--gold-bright)}
+
+  .cats{
+    display:flex;flex-direction:column;gap:1px;
+    max-height:330px;overflow-y:auto;
+    margin:-0.2rem -0.3rem 1.1rem;padding:0 0.3rem;
+    scrollbar-width:thin;scrollbar-color:var(--gold-deep) transparent;
+  }
+  .cats::-webkit-scrollbar{width:6px}
+  .cats::-webkit-scrollbar-thumb{background:var(--gold-deep);border-radius:3px}
+
+  label.cat{
+    display:flex;align-items:center;gap:0.7rem;
+    padding:0.4rem 0.5rem;
+    cursor:pointer;border-radius:2px;
+    font-size:1.05rem;color:var(--ash);
+    transition:background .15s ease,color .15s ease;
+  }
+  label.cat:hover{background:rgba(201,162,39,0.07);color:var(--gold-bright)}
+  label.cat .count{margin-left:auto;font-size:0.8rem;color:var(--ash-dim);font-variant-numeric:tabular-nums}
+  label.cat .count b{color:var(--gold-deep);font-weight:600}
+  label.cat.depleted{opacity:0.45}
+
+  input[type=checkbox]{appearance:none;-webkit-appearance:none;margin:0;flex:0 0 auto;
+    width:16px;height:16px;border-radius:3px;
+    border:1.5px solid var(--gold-deep);position:relative;transition:border-color .15s,background .15s}
+  input[type=checkbox]:checked{border-color:var(--gold-bright);background:rgba(240,217,138,0.12)}
+  input[type=checkbox]:checked::after{content:'';position:absolute;left:4px;top:0px;
+    width:5px;height:10px;border:solid var(--gold-bright);border-width:0 2px 2px 0;transform:rotate(45deg)}
+  input[type=checkbox]:focus-visible{outline:2px solid var(--gold-bright);outline-offset:2px}
+  label.cat:has(input:checked){color:var(--gold-bright)}
+
+  .spin-btn{
+    width:100%;
+    font-family:'Cinzel',serif;font-weight:600;
+    letter-spacing:0.2em;text-transform:uppercase;font-size:0.82rem;
+    color:#1a1206;
+    background:linear-gradient(180deg,var(--gold-bright),var(--gold) 55%,var(--gold-deep));
+    border:1px solid #2a2010;border-radius:2px;
+    padding:0.85rem;cursor:pointer;
+    box-shadow:0 0 18px rgba(201,162,39,0.35),inset 0 1px 0 rgba(255,255,255,0.35);
+    transition:filter .15s ease,transform .1s ease;
+  }
+  .spin-btn:hover{filter:brightness(1.1)}
+  .spin-btn:active{transform:translateY(1px)}
+  .spin-btn:disabled{filter:grayscale(0.7) brightness(0.6);cursor:not-allowed;box-shadow:none}
+
+  .pool-line{
+    margin-top:0.9rem;text-align:center;font-size:0.92rem;color:var(--ash-dim);
+    font-variant-numeric:tabular-nums;
+  }
+  .pool-line b{color:var(--gold);font-weight:600}
+
+  /* ---- Result ---- */
+  .result{
+    margin-top:2.4rem;text-align:center;min-height:5rem;
+    opacity:0;transform:translateY(8px);
+    transition:opacity .6s ease,transform .6s ease;
+  }
+  .result.show{opacity:1;transform:none}
+  .result .lead{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.42em;
+    text-transform:uppercase;color:var(--gold-deep)}
+  .result .name{font-family:'Cinzel',serif;font-weight:700;
+    font-size:clamp(1.6rem,4.5vw,2.6rem);color:var(--gold-bright);
+    margin:0.5rem 0 0.25rem;text-shadow:0 0 24px rgba(240,217,138,0.4)}
+  .result .cat-tag{font-style:italic;font-size:1.05rem;color:var(--ash-dim);margin-bottom:1rem}
+  .result-actions{display:flex;gap:0.6rem;justify-content:center;flex-wrap:wrap}
+  .btn{
+    font-family:'Cinzel',serif;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;
+    font-size:0.68rem;border-radius:2px;padding:0.6rem 1.1rem;cursor:pointer;transition:filter .15s,transform .1s;
+  }
+  .btn:active{transform:translateY(1px)}
+  .btn-primary{color:#1a1206;background:linear-gradient(180deg,var(--gold-bright),var(--gold) 60%,var(--gold-deep));
+    border:1px solid #2a2010;box-shadow:0 0 14px rgba(201,162,39,0.3)}
+  .btn-primary:hover{filter:brightness(1.1)}
+  .btn-ghost{color:var(--ash);background:rgba(201,162,39,0.06);border:1px solid var(--panel-edge)}
+  .btn-ghost:hover{color:var(--gold-bright);border-color:var(--gold-deep)}
+
+  /* ---- Ledger / Tier list ---- */
+  .ledger{
+    width:100%;max-width:960px;margin-top:3.2rem;
+  }
+  .section-head{
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+    margin-bottom:0.4rem;
+  }
+  .section-head h2{
+    font-family:'Cinzel',serif;font-weight:600;font-size:clamp(1.1rem,3vw,1.5rem);
+    color:var(--gold-bright);letter-spacing:0.06em;
+  }
+  .ledger-tools{display:flex;gap:0.55rem;flex-wrap:wrap}
+  .progress{
+    font-size:0.98rem;color:var(--ash-dim);font-style:italic;margin-bottom:1.4rem;
+  }
+  .progress b{color:var(--gold);font-style:normal;font-variant-numeric:tabular-nums}
+  .progress-bar{height:6px;border-radius:3px;background:rgba(201,162,39,0.1);
+    border:1px solid var(--panel-edge);overflow:hidden;margin-top:0.55rem;max-width:520px}
+  .progress-bar span{display:block;height:100%;width:0%;
+    background:linear-gradient(90deg,var(--gold-deep),var(--gold-bright));transition:width .4s ease}
+
+  .tierboard{display:flex;flex-direction:column;gap:6px}
+  .tier-row{
+    display:grid;grid-template-columns:64px 1fr;gap:8px;align-items:stretch;
+    background:linear-gradient(180deg,rgba(30,23,13,0.55),rgba(16,12,8,0.55));
+    border:1px solid var(--panel-edge);border-radius:3px;overflow:hidden;
+  }
+  .tier-label{
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cinzel',serif;font-weight:700;font-size:1.5rem;color:#140e05;
+    letter-spacing:0.02em;user-select:none;
+  }
+  .tier-S .tier-label{background:linear-gradient(135deg,#f2b8b8,#c94b4b)}
+  .tier-A .tier-label{background:linear-gradient(135deg,#f2d3a6,#d98a3a)}
+  .tier-B .tier-label{background:linear-gradient(135deg,#f0e6a8,#c9b23a)}
+  .tier-C .tier-label{background:linear-gradient(135deg,#c8e0a6,#7fae4a)}
+  .tier-D .tier-label{background:linear-gradient(135deg,#a6d3e0,#4a8fae)}
+  .tier-F .tier-label{background:linear-gradient(135deg,#c9b6d8,#7a5a99)}
+  .dropzone{
+    display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start;
+    min-height:56px;padding:8px;transition:background .15s,box-shadow .15s;
+  }
+  .dropzone.over{background:rgba(240,217,138,0.10);box-shadow:inset 0 0 0 2px var(--gold-deep)}
+  .dropzone:empty::after{content:'Drag weapons here';color:var(--ash-dim);opacity:0.5;
+    font-style:italic;font-size:0.9rem;align-self:center}
+
+  .unranked-wrap{margin-top:1rem;
+    background:linear-gradient(180deg,rgba(30,23,13,0.45),rgba(16,12,8,0.45));
+    border:1px dashed var(--panel-edge);border-radius:3px;padding:0.7rem 0.85rem 0.85rem}
+  .unranked-wrap h3{font-family:'Cinzel',serif;font-size:0.62rem;font-weight:600;
+    letter-spacing:0.24em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:0.55rem}
+  .unranked-wrap .dropzone{min-height:48px;padding:2px 0 0}
+
+  .chip{
+    display:inline-flex;align-items:center;gap:0.4rem;
+    background:linear-gradient(180deg,#2a2010,#1c150c);
+    border:1px solid var(--gold-deep);border-radius:2px;
+    padding:0.32rem 0.55rem;font-size:0.94rem;color:var(--gold-bright);
+    cursor:grab;user-select:none;max-width:100%;
+    box-shadow:0 2px 6px rgba(0,0,0,0.4);transition:filter .12s,transform .12s;
+  }
+  .chip:hover{filter:brightness(1.15)}
+  .chip:active{cursor:grabbing}
+  .chip.dragging{opacity:0.4}
+  .chip .chip-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px}
+  .chip .chip-cat{font-size:0.72rem;color:var(--ash-dim);font-style:italic}
+  .chip .chip-return{
+    border:none;background:none;color:var(--ash-dim);cursor:pointer;font-size:0.95rem;
+    line-height:1;padding:0 0 0 0.15rem;transition:color .12s;
+  }
+  .chip .chip-return:hover{color:var(--ember)}
+  .empty-ledger{font-style:italic;color:var(--ash-dim);opacity:0.7;padding:1.2rem 0}
+
+  /* ---- Support bar ---- */
+  .support{
+    display:flex;gap:0.7rem;justify-content:center;flex-wrap:wrap;
+    margin-top:3rem;width:100%;
+  }
+  .support .btn{text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem}
+  .btn-donate{
+    color:#1a1206;
+    background:linear-gradient(180deg,#ffe27a,#ffd23f 55%,#e0a800);
+    border:1px solid #2a2010;
+    box-shadow:0 0 16px rgba(255,210,63,0.35),inset 0 1px 0 rgba(255,255,255,0.4);
+  }
+  .btn-donate:hover{filter:brightness(1.08)}
+
+  .toast{
+    position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);
+    background:linear-gradient(180deg,#2a2010,#15100a);border:1px solid var(--gold-deep);
+    color:var(--gold-bright);padding:0.7rem 1.2rem;border-radius:2px;font-size:0.98rem;
+    box-shadow:0 10px 30px rgba(0,0,0,0.6);opacity:0;pointer-events:none;z-index:50;
+    transition:opacity .25s,transform .25s;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  footer{margin-top:2.2rem;padding-top:0;font-size:0.9rem;color:var(--ash-dim);
+    font-style:italic;text-align:center;max-width:56ch;line-height:1.4}
+  footer code{font-family:ui-monospace,monospace;font-style:normal;font-size:0.82em;
+    color:var(--gold-deep);background:rgba(201,162,39,0.08);padding:0.1em 0.4em;border-radius:2px}
+
+  @media (max-width:720px){
+    .stage{grid-template-columns:1fr}
+    .controls{order:2}
+    .wheel-wrap{max-width:400px}
+    .tier-row{grid-template-columns:48px 1fr}
+    .tier-label{font-size:1.2rem}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .result,.wheel-wrap.landed .glow,.progress-bar span{transition:none}
+  }
+</style>
+</head>
+<body>
+  <div class="eyebrow">Sites of Grace · The Lands Between</div>
+  <h1>Grace of the Wheel</h1>
+  <p class="subtitle">A companion for the all-weapons run. Choose categories, turn the wheel, retire each armament as you clear it, and rank your journey.</p>
+  <div class="rule"></div>
+
+  <div class="stage">
+    <div class="wheel-wrap" id="wheelWrap">
+      <div class="glow"></div>
+      <canvas id="wheel" width="900" height="900" aria-label="Weapon spin wheel"></canvas>
+      <div class="pointer"></div>
+      <button class="hub" id="hub" title="Turn the wheel" aria-label="Spin the wheel"></button>
+      <div class="empty-note" id="emptyNote">No weapons remain in the chosen categories. Pick more, or restore some from the ledger.</div>
+    </div>
+
+    <div class="controls">
+      <div class="panel-head">
+        <h2>Weapon Categories</h2>
+        <div class="mini-links">
+          <button class="mini-link" id="selAll">All</button>
+          <button class="mini-link" id="selNone">None</button>
+        </div>
+      </div>
+      <div class="groupfilters" id="groupFilters" aria-label="Quick group filters"></div>
+      <div class="cats" id="cats" role="group" aria-label="Weapon categories"></div>
+      <button class="spin-btn" id="spinBtn">Turn the Wheel</button>
+      <div class="pool-line" id="poolLine"></div>
+    </div>
+  </div>
+
+  <div class="result" id="result" aria-live="polite">
+    <div class="lead">Grace guides you toward</div>
+    <div class="name" id="resultName"></div>
+    <div class="cat-tag" id="resultCat"></div>
+    <div class="result-actions">
+      <button class="btn btn-primary" id="markUsed">Retire this weapon ✦</button>
+      <button class="btn btn-ghost" id="rerollBtn">Turn again</button>
+    </div>
+  </div>
+
+  <section class="ledger">
+    <div class="section-head">
+      <h2>The Armory Ledger</h2>
+      <div class="ledger-tools">
+        <button class="btn btn-ghost" id="exportBtn">Export</button>
+        <button class="btn btn-ghost" id="importBtn">Import</button>
+        <button class="btn btn-ghost" id="resetBtn">Reset run</button>
+        <input type="file" id="importFile" accept="application/json" hidden>
+      </div>
+    </div>
+    <p class="progress" id="progress">
+      <span id="progressText">No weapons retired yet.</span>
+      <span class="progress-bar"><span id="progressFill"></span></span>
+    </p>
+
+    <div class="tierboard" id="tierboard"></div>
+
+    <div class="unranked-wrap">
+      <h3>Retired — awaiting judgement</h3>
+      <div class="dropzone" id="unranked" data-tier="unranked"></div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SUPPORT BAR
+       If you reuse this file, please keep the "Buy me a coffee" button intact
+       (see the license note at the top of this file). To make the feature
+       button work, replace its placeholder URL with your own form link.
+       ========================================================================= -->
+  <div class="support">
+    <a class="btn btn-ghost" id="featureBtn"
+       href="https://REPLACE-ME.example.com/feature-request-form"
+       target="_blank" rel="noopener noreferrer">✦ Request a feature</a>
+    <a class="btn btn-donate" id="donateBtn"
+       href="https://buymeacoffee.com/gomatic"
+       target="_blank" rel="noopener noreferrer">☕ Buy me a coffee</a>
+  </div>
+
+  <footer>
+    Rosters cover the base game and Shadow of the Erdtree. Progress is saved in this browser automatically —
+    use <b>Export</b> to back it up. To add Convergence mod weapons, edit the <code>WEAPONS</code> object at the top of the script.
+    <br><br>
+    Free to copy and reuse under the MIT License — please keep the donate button. © 2026 gomatic.
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   Edit weapon lists here. Add/remove freely — the wheel,
+   category list and ledger rebuild automatically.
+   ============================================================ */
+const WEAPONS = {
+  "Daggers": ["Black Knife","Blade of Calling","Bloodstained Dagger","Celebrant's Sickle","Cinquedea","Crystal Knife","Dagger","Erdsteel Dagger","Glintstone Kris","Great Knife","Ivory Sickle","Main-gauche","Misericorde","Parrying Dagger","Reduvia","Scorpion's Stinger","Wakizashi"],
+  "Straight Swords": ["Broadsword","Cane Sword","Carian Knight's Sword","Coded Sword","Crystal Sword","Fire Knight's Shortsword","Golden Epitaph","Lazuli Glintstone Sword","Longsword","Lordsworn's Straight Sword","Miquellan Knight's Sword","Noble's Slender Sword","Ornamental Straight Sword","Regalia of Eochaid","Rotten Crystal Sword","Short Sword","Stone-Sheathed Sword","Sword of Darkness","Sword of Light","Sword of Night and Flame","Sword of St. Trina","Velvet Sword of St. Trina","Warhawk's Talon","Weathered Straight Sword"],
+  "Greatswords": ["Alabaster Lord's Sword","Banished Knight's Greatsword","Bastard Sword","Blasphemous Blade","Claymore","Dark Moon Greatsword","Death's Poker","Flamberge","Forked Greatsword","Freyja's Greatsword","Gargoyle's Blackblade","Gargoyle's Greatsword","Golden Order Greatsword","Greatsword of Damnation","Greatsword of Solitude","Helphen's Steeple","Inseparable Sword","Iron Greatsword","Knight's Greatsword","Lizard Greatsword","Lordsworn's Greatsword","Marais Executioner's Sword","Ordovis's Greatsword","Queelign's Greatsword","Sacred Relic Sword","Sword of Milos"],
+  "Colossal Swords": ["Ancient Meteoric Ore Greatsword","Fire Knight's Greatsword","Godslayer's Greatsword","Grafted Blade Greatsword","Greatsword","Greatsword of Radahn (Light)","Greatsword of Radahn (Lord)","Maliketh's Black Blade","Moonrithyll's Knight Sword","Royal Greatsword","Ruins Greatsword","Starscourge Greatsword","Troll Knight's Sword","Troll's Golden Sword","Watchdog's Greatsword","Zweihander"],
+  "Thrusting Swords": ["Antspur Rapier","Carian Sorcery Sword","Cleanrot Knight's Sword","Estoc","Frozen Needle","Noble's Estoc","Rapier","Rogier's Rapier"],
+  "Heavy Thrusting Swords": ["Bloody Helice","Dragon King's Cragblade","Godskin Stitcher","Great Epee","Sword Lance"],
+  "Curved Swords": ["Bandit's Curved Sword","Beastman's Curved Sword","Dancing Blade of Ranah","Eclipse Shotel","Falchion","Falx","Flowing Curved Sword","Grossmesser","Horned Warrior's Sword","Magma Blade","Mantis Blade","Nox Flowing Sword","Scavenger's Curved Sword","Scimitar","Serpent-God's Curved Sword","Shamshir","Shotel","Spirit Sword","Wing of Astel"],
+  "Curved Greatswords": ["Beastman's Cleaver","Bloodhound's Fang","Dismounter","Horned Warrior's Greatsword","Magma Wyrm's Scalesword","Monk's Flameblade","Morgott's Cursed Sword","Omen Cleaver","Onyx Lord's Greatsword","Zamor Curved Sword"],
+  "Katanas": ["Dragonscale Blade","Hand of Malenia","Meteoric Ore Blade","Moonveil","Nagakiba","Rivers of Blood","Serpentbone Blade","Star-Lined Sword","Sword of Night","Uchigatana"],
+  "Great Katanas": ["Dragon-Hunter's Great Katana","Great Katana","Rakshasa's Great Katana"],
+  "Twinblades": ["Black Steel Twinblade","Eleonora's Poleblade","Euporia","Gargoyle's Black Blades","Gargoyle's Twinblade","Godskin Peeler","Twinblade","Twinned Knight Swords"],
+  "Backhand Blades": ["Backhand Blade","Curseblade's Cirque","Smithscript Cirque"],
+  "Light Greatswords": ["Leda's Sword","Milady","Rellana's Twin Blades"],
+  "Axes": ["Battle Axe","Celebrant's Cleaver","Death Knight's Twin Axes","Forked Hatchet","Forked-Tongue Hatchet","Hand Axe","Highland Axe","Icerind Hatchet","Iron Cleaver","Jawbone Axe","Messmer Soldier's Axe","Ripple Blade","Rosus' Axe","Sacrificial Axe","Smithscript Axe","Stormhawk Axe","Warped Axe"],
+  "Greataxes": ["Axe of Godrick","Bonny Butchering Knife","Butchering Knife","Crescent Moon Axe","Death Knight's Longhaft Axe","Executioner's Greataxe","Gargoyle's Black Axe","Gargoyle's Great Axe","Great Omenkiller Cleaver","Greataxe","Longhaft Axe","Putrescence Cleaver","Rusted Anchor","Winged Greathorn"],
+  "Hammers": ["Club","Curved Club","Envoy's Horn","Flowerstone Gavel","Hammer","Mace","Marika's Hammer","Monk's Flamemace","Morning Star","Nox Flowing Hammer","Ringed Finger","Scepter of the All-Knowing","Spiked Club","Stone Club","Varre's Bouquet","Warpick"],
+  "Warhammers": ["Battle Hammer","Beastclaw Greathammer","Brick Hammer","Celebrant's Skull","Cranial Vessel Candlestand","Curved Great Club","Devourer's Scepter","Envoy's Long Horn","Great Mace","Great Stars","Greathorn Hammer","Large Club","Pickaxe","Rotten Battle Hammer"],
+  "Great Hammers": ["Black Steel Greathammer","Smithscript Greathammer"],
+  "Flails": ["Bastard's Stars","Chainlink Flail","Family Heads","Flail","Nightrider Flail","Serpent Flail"],
+  "Colossal Weapons": ["Anvil Hammer","Axe of Godfrey","Bloodfiend's Arm","Devonia's Hammer","Dragon Greatclaw","Duelist Greataxe","Envoy's Greathorn","Fallingstar Beast Jaw","Gazing Finger","Ghiza's Wheel","Giant-Crusher","Golem's Halberd","Great Club","Prelate's Inferno Crozier","Rotten Greataxe","Rotten Staff","Shadow Sunflower Blossom","Staff of the Avatar","Troll's Hammer","Watchdog's Staff"],
+  "Spears": ["Bloodfiend's Fork","Bolt of Gransax","Celebrant's Rib-Rake","Clayman's Harpoon","Cleanrot Spear","Cross-Naginata","Crystal Spear","Death Ritual Spear","Inquisitor's Girandole","Iron Spear","Partisan","Pike","Rotten Crystal Spear","Short Spear","Smithscript Spear","Spear","Spiked Spear","Swift Spear","Torchpole"],
+  "Great Spears": ["Barbed Staff-Spear","Bloodfiend's Sacred Spear","Lance","Messmer Soldier's Spear","Mohgwyn's Sacred Spear","Serpent-Hunter","Siluria's Tree","Spear of the Impaler","Treespear","Vyke's War Spear"],
+  "Halberds": ["Banished Knight's Halberd","Commander's Standard","Dragon Halberd","Gargoyle's Black Halberd","Gargoyle's Halberd","Glaive","Golden Halberd","Guardian's Swordspear","Halberd","Loretta's War Sickle","Lucerne","Nightrider Glaive","Pest's Glaive","Poleblade of the Bud","Ripple Crescent Halberd","Spirit Glaive","Vulgar Militia Saw","Vulgar Militia Shotel"],
+  "Reapers": ["Grave Scythe","Halo Scythe","Obsidian Lamina","Scythe","Winged Scythe"],
+  "Whips": ["Giant's Red Braid","Hoslow's Petal Whip","Magma Whip Candlestick","Thorned Whip","Tooth Whip","Urumi","Whip"],
+  "Fists": ["Caestus","Cipher Pata","Clinging Bone","Golem Fist","Grafted Dragon","Iron Ball","Katar","Madding Hand","Pata","Poisoned Hand","Spiked Caestus","Star Fist","Thiollier's Hidden Needle","Veteran's Prosthesis"],
+  "Claws": ["Bloodhound Claws","Hookclaws","Raptor Talons","Venomous Fang"],
+  "Beast Claws": ["Beast Claw","Claws of Night","Red Bear's Claw"],
+  "Hand-to-Hand Arts": ["Dane's Footwork","Dryleaf Arts"],
+  "Perfume Bottles": ["Chilling Perfume Bottle","Deadly Poison Perfume Bottle","Firespark Perfume Bottle","Frenzyflame Perfume Bottle","Lightning Perfume Bottle"],
+  "Throwing Blades": ["Smithscript Dagger"],
+  "Thrusting Shields": ["Carian Thrusting Shield","Dueling Shield"],
+  "Light Bows": ["Bone Bow","Composite Bow","Harp Bow","Misbegotten Shortbow","Red Branch Shortbow","Shortbow"],
+  "Bows": ["Albinauric Bow","Ansbach's Longbow","Black Bow","Erdtree Bow","Horn Bow","Longbow","Pulley Bow","Serpent Bow"],
+  "Greatbows": ["Erdtree Greatbow","Golem Greatbow","Greatbow","Igon's Greatbow","Lion Greatbow"],
+  "Crossbows": ["Arbalest","Crepus's Black-Key Crossbow","Full Moon Crossbow","Heavy Crossbow","Light Crossbow","Pulley Crossbow","Repeating Crossbow","Soldier's Crossbow","Spread Crossbow"],
+  "Ballistae": ["Hand Ballista","Jar Cannon","Rabbath's Cannon"],
+  "Glintstone Staves": ["Academy Glintstone Staff","Albinauric Staff","Astrologer's Staff","Azur's Glintstone Staff","Carian Glintblade Staff","Carian Glintstone Staff","Carian Regal Scepter","Crystal Staff","Demi-Human Queen's Staff","Digger's Staff","Gelmir Glintstone Staff","Glintstone Staff","Lusat's Glintstone Staff","Maternal Staff","Meteorite Staff","Prince of Death's Staff","Rotten Crystal Staff","Staff of Loss","Staff of the Great Beyond","Staff of the Guilty"],
+  "Sacred Seals": ["Clawmark Seal","Dragon Communion Seal","Dryleaf Seal","Erdtree Seal","Finger Seal","Fire Knight's Seal","Frenzied Flame Seal","Giant's Seal","Godslayer's Seal","Golden Order Seal","Gravel Stone Seal","Spiraltree Seal"],
+  "Torches": ["Beast-Repellent Torch","Ghostflame Torch","Lamenting Visage","Nanaya's Torch","Sentry's Torch","St. Trina's Torch","Steel-Wire Torch","Torch"]
+};
+
+const TIERS = ['S','A','B','C','D','F'];
+const STORE_KEY = 'er-allweapons-v1';
+
+/* ---------- Derived weapon indices ---------- */
+const weaponCat = new Map();        // name -> canonical category (for display)
+const weaponCatsAll = new Map();    // name -> Set of categories
+Object.entries(WEAPONS).forEach(([cat, list]) => {
+  list.forEach(name => {
+    if (!weaponCat.has(name)) weaponCat.set(name, cat);
+    if (!weaponCatsAll.has(name)) weaponCatsAll.set(name, new Set());
+    weaponCatsAll.get(name).add(cat);
+  });
+});
+const ALL_NAMES = [...weaponCat.keys()];
+
+/* ---------- DLC weapons (from Shadow of the Erdtree) ---------- */
+const DLC_WEAPONS = new Set(["Alabaster Lord's Sword","Ancient Meteoric Ore Greatsword","Ansbach's Longbow","Anvil Hammer","Backhand Blade","Barbed Staff-Spear","Beast Claw","Black Steel Greathammer","Black Steel Twinblade","Bloodfiend's Arm","Bloodfiend's Fork","Bloodfiend's Sacred Spear","Bone Bow","Bonny Butchering Knife","Carian Sorcery Sword","Carian Thrusting Shield","Chilling Perfume Bottle","Claws of Night","Curseblade's Cirque","Dancing Blade of Ranah","Dane's Footwork","Deadly Poison Perfume Bottle","Death Knight's Longhaft Axe","Death Knight's Twin Axes","Devonia's Hammer","Dragon-Hunter's Great Katana","Dryleaf Arts","Dryleaf Seal","Dueling Shield","Euporia","Falx","Fire Knight's Greatsword","Fire Knight's Seal","Fire Knight's Shortsword","Firespark Perfume Bottle","Flowerstone Gavel","Forked-Tongue Hatchet","Frenzyflame Perfume Bottle","Freyja's Greatsword","Gazing Finger","Golem Fist","Great Katana","Greatsword of Damnation","Greatsword of Radahn (Light)","Greatsword of Radahn (Lord)","Greatsword of Solitude","Horned Warrior's Greatsword","Horned Warrior's Sword","Igon's Greatbow","Lamenting Visage","Leda's Sword","Lightning Perfume Bottle","Lizard Greatsword","Madding Hand","Main-gauche","Maternal Staff","Messmer Soldier's Axe","Messmer Soldier's Spear","Milady","Moonrithyll's Knight Sword","Nanaya's Torch","Obsidian Lamina","Pata","Poisoned Hand","Poleblade of the Bud","Putrescence Cleaver","Queelign's Greatsword","Rabbath's Cannon","Rakshasa's Great Katana","Red Bear's Claw","Rellana's Twin Blades","Repeating Crossbow","Serpent Flail","Shadow Sunflower Blossom","Smithscript Axe","Smithscript Cirque","Smithscript Dagger","Smithscript Greathammer","Smithscript Spear","Spear of the Impaler","Spiraltree Seal","Spirit Glaive","Spirit Sword","Spread Crossbow","Staff of the Great Beyond","Star-Lined Sword","Stone-Sheathed Sword","Swift Spear","Sword Lance","Sword of Darkness","Sword of Light","Sword of Night","Thiollier's Hidden Needle","Tooth Whip","Velvet Sword of St. Trina"]);
+
+/* ---------- Group quick-filters (map categories -> weapon class) ---------- */
+const GROUP_DEFS = {
+  "Ranged":    ["Light Bows","Bows","Greatbows","Crossbows","Ballistae"],
+  "Catalysts": ["Glintstone Staves","Sacred Seals"],
+  "Shields":   ["Thrusting Shields"]
+};
+const NON_MELEE = new Set(Object.values(GROUP_DEFS).flat());
+const GROUPS = {
+  "Melee":     Object.keys(WEAPONS).filter(c => !NON_MELEE.has(c)),
+  ...GROUP_DEFS
+};
+
+const isDLC = name => DLC_WEAPONS.has(name);
+const passesDLC = name => state.includeDLC || !isDLC(name);
+
+/* ---------- Persistent state ---------- */
+let state = {
+  used: {},           // name -> tier ('unranked' | 'S'..'F')
+  selected: [],       // selected category names
+  includeDLC: true    // include Shadow of the Erdtree weapons
+};
+
+function load(){
+  try{
+    const raw = localStorage.getItem(STORE_KEY);
+    if (raw){
+      const parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === 'object'){
+        state.used = parsed.used && typeof parsed.used === 'object' ? parsed.used : {};
+        state.selected = Array.isArray(parsed.selected) ? parsed.selected : [];
+        state.includeDLC = parsed.includeDLC !== false; // default true
+      }
+    }
+  }catch(e){ /* ignore corrupt storage */ }
+  Object.keys(state.used).forEach(n => { if (!weaponCat.has(n)) delete state.used[n]; });
+  state.selected = state.selected.filter(c => WEAPONS[c]);
+  if (state.selected.length === 0) state.selected = Object.keys(WEAPONS);
+}
+function save(){
+  try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){}
+}
+
+/* ---------- Element refs ---------- */
+const canvas = document.getElementById('wheel');
+const ctx = canvas.getContext('2d');
+const catsEl = document.getElementById('cats');
+const spinBtn = document.getElementById('spinBtn');
+const hub = document.getElementById('hub');
+const wheelWrap = document.getElementById('wheelWrap');
+const resultEl = document.getElementById('result');
+const resultName = document.getElementById('resultName');
+const resultCat = document.getElementById('resultCat');
+const markUsedBtn = document.getElementById('markUsed');
+const rerollBtn = document.getElementById('rerollBtn');
+const poolLine = document.getElementById('poolLine');
+const tierboard = document.getElementById('tierboard');
+const unrankedZone = document.getElementById('unranked');
+const progressText = document.getElementById('progressText');
+const progressFill = document.getElementById('progressFill');
+const toastEl = document.getElementById('toast');
+
+const SIZE = canvas.width;
+const R = SIZE / 2;
+const palette = ['#1c150c','#251a0d','#20180d','#2a1e0f'];
+let current = [];
+let rotation = -Math.PI / 2;
+let spinning = false;
+let lastWinner = null;
+
+/* ---------- Pool helpers ---------- */
+function selectedSet(){ return new Set(state.selected); }
+
+function poolNames(){
+  const sel = selectedSet();
+  return ALL_NAMES.filter(name => {
+    if (state.used[name] !== undefined) return false;         // exclude retired
+    if (!passesDLC(name)) return false;                       // DLC filter
+    for (const c of weaponCatsAll.get(name)) if (sel.has(c)) return true;
+    return false;
+  });
+}
+function catEligible(cat){ return WEAPONS[cat].filter(passesDLC); }
+
+/* ---------- Category checkboxes ---------- */
+function buildCats(){
+  catsEl.innerHTML = '';
+  const sel = selectedSet();
+  Object.keys(WEAPONS).forEach(cat => {
+    const eligible = catEligible(cat);
+    const total = eligible.length;
+    const remaining = eligible.filter(n => state.used[n] === undefined).length;
+    const label = document.createElement('label');
+    label.className = 'cat' + ((total === 0 || remaining === 0) ? ' depleted' : '');
+    label.innerHTML =
+      `<input type="checkbox" value="${cat.replace(/"/g,'&quot;')}"${sel.has(cat)?' checked':''}>
+       <span>${cat}</span>
+       <span class="count"><b>${remaining}</b>/${total}</span>`;
+    catsEl.appendChild(label);
+  });
+  updateGroupFilters();
+}
+catsEl.addEventListener('change', e => {
+  if (e.target.type !== 'checkbox') return;
+  const cat = e.target.value;
+  const sel = selectedSet();
+  if (e.target.checked) sel.add(cat); else sel.delete(cat);
+  state.selected = Object.keys(WEAPONS).filter(c => sel.has(c));
+  save();
+  updateGroupFilters();
+  refreshWheelState();
+});
+document.getElementById('selAll').addEventListener('click', () => {
+  state.selected = Object.keys(WEAPONS); save(); buildCats(); refreshWheelState();
+});
+document.getElementById('selNone').addEventListener('click', () => {
+  state.selected = []; save(); buildCats(); refreshWheelState();
+});
+
+/* ---------- Group quick-filters ---------- */
+const groupFiltersEl = document.getElementById('groupFilters');
+function buildGroupFilters(){
+  groupFiltersEl.innerHTML = '';
+  Object.keys(GROUPS).forEach(g => {
+    const btn = document.createElement('button');
+    btn.className = 'gf';
+    btn.dataset.group = g;
+    btn.innerHTML = `<span class="box"></span><span>${g}</span>`;
+    btn.addEventListener('click', () => toggleGroup(g));
+    groupFiltersEl.appendChild(btn);
+  });
+  const dlc = document.createElement('button');
+  dlc.className = 'gf';
+  dlc.id = 'dlcToggle';
+  dlc.title = 'Include Shadow of the Erdtree weapons';
+  dlc.innerHTML = `<span class="box"></span><span>DLC</span>`;
+  dlc.addEventListener('click', () => {
+    state.includeDLC = !state.includeDLC;
+    save();
+    buildCats();
+    refreshWheelState();
+  });
+  groupFiltersEl.appendChild(dlc);
+  updateGroupFilters();
+}
+function groupState(cats){
+  const sel = selectedSet();
+  const on = cats.filter(c => sel.has(c)).length;
+  if (on === 0) return 'none';
+  if (on === cats.length) return 'all';
+  return 'some';
+}
+function toggleGroup(g){
+  const cats = GROUPS[g];
+  const sel = selectedSet();
+  const allOn = cats.every(c => sel.has(c));
+  cats.forEach(c => { if (allOn) sel.delete(c); else sel.add(c); });
+  state.selected = Object.keys(WEAPONS).filter(c => sel.has(c));
+  save();
+  buildCats();
+  refreshWheelState();
+}
+function updateGroupFilters(){
+  Object.keys(GROUPS).forEach(g => {
+    const btn = groupFiltersEl.querySelector(`.gf[data-group="${g}"]`);
+    if (btn) btn.dataset.state = groupState(GROUPS[g]);
+  });
+  const dlc = document.getElementById('dlcToggle');
+  if (dlc) dlc.dataset.state = state.includeDLC ? 'all' : 'none';
+}
+
+/* ---------- Wheel ---------- */
+function refreshWheelState(){
+  current = poolNames();
+  const empty = current.length === 0;
+  wheelWrap.classList.toggle('empty', empty);
+  spinBtn.disabled = empty || spinning;
+  hub.disabled = empty || spinning;
+  const totalRemaining = ALL_NAMES.filter(n => state.used[n] === undefined && passesDLC(n)).length;
+  poolLine.innerHTML = `<b>${current.length}</b> weapon${current.length===1?'':'s'} on the wheel · <b>${totalRemaining}</b> left overall`;
+  drawWheel();
+}
+
+function drawWheel(highlightIndex = -1){
+  ctx.clearRect(0,0,SIZE,SIZE);
+  const n = current.length;
+  if (n === 0){ // faint empty ring
+    ctx.save();ctx.translate(R,R);
+    ctx.beginPath();ctx.arc(0,0,R-6,0,2*Math.PI);
+    ctx.lineWidth=8;ctx.strokeStyle='#2a2214';ctx.stroke();
+    ctx.restore();return;
+  }
+  const seg = (2*Math.PI)/n;
+  ctx.save();
+  ctx.translate(R,R);
+  ctx.rotate(rotation);
+
+  for (let i=0;i<n;i++){
+    const a0 = i*seg, a1 = a0+seg;
+    ctx.beginPath();
+    ctx.moveTo(0,0);
+    ctx.arc(0,0,R-6,a0,a1);
+    ctx.closePath();
+    ctx.fillStyle = i===highlightIndex ? '#5a4415' : palette[i%palette.length];
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(201,162,39,0.28)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    ctx.save();
+    ctx.rotate(a0 + seg/2);
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+    const fs = Math.max(12, Math.min(30, 520/n));
+    ctx.font = `${i===highlightIndex?'700':'500'} ${fs}px 'Cormorant Garamond', serif`;
+    ctx.fillStyle = i===highlightIndex ? '#f0d98a' : '#b8a76a';
+    let name = current[i];
+    const max = n>22 ? 14 : (n>14 ? 18 : 24);
+    if (name.length>max) name = name.slice(0,max-1)+'…';
+    ctx.fillText(name, R-22, 0);
+    ctx.restore();
+  }
+
+  ctx.beginPath();ctx.arc(0,0,R-6,0,2*Math.PI);
+  ctx.lineWidth=8;ctx.strokeStyle='#3a2f1a';ctx.stroke();
+  ctx.beginPath();ctx.arc(0,0,R-3,0,2*Math.PI);
+  ctx.lineWidth=2;ctx.strokeStyle='rgba(240,217,138,0.35)';ctx.stroke();
+  ctx.restore();
+}
+
+function spin(){
+  if (spinning || current.length===0) return;
+  spinning = true;
+  spinBtn.disabled = true;
+  hub.disabled = true;
+  wheelWrap.classList.remove('landed');
+  resultEl.classList.remove('show');
+
+  const n = current.length;
+  const seg = (2*Math.PI)/n;
+  const winner = Math.floor(Math.random()*n);
+  const jitter = (Math.random()-0.5)*seg*0.6;
+  const targetBase = -Math.PI/2 - (winner*seg + seg/2) + jitter;
+  const turns = 5 + Math.floor(Math.random()*3);
+  const start = rotation;
+  // Spin clockwise (increasing canvas rotation) and travel at least `turns`
+  // full rotations (always >= 1) before landing on the winner. Computed
+  // relative to the current angle so every spin is a fresh multi-rotation
+  // turn — never short or backward, even after many spins accumulate.
+  let end = targetBase;
+  while (end - start < turns*2*Math.PI) end += 2*Math.PI;
+  const dur = 4200;
+  const t0 = performance.now();
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce){ rotation = end; drawWheel(winner); finish(winner); return; }
+
+  function frame(now){
+    const p = Math.min(1,(now-t0)/dur);
+    const eased = 1 - Math.pow(1-p, 3);
+    rotation = start + (end-start)*eased;
+    drawWheel();
+    if (p<1) requestAnimationFrame(frame);
+    else { drawWheel(winner); finish(winner); }
+  }
+  requestAnimationFrame(frame);
+}
+
+function finish(winner){
+  spinning = false;
+  spinBtn.disabled = false;
+  hub.disabled = false;
+  wheelWrap.classList.add('landed');
+  const name = current[winner];
+  lastWinner = { name, cat: weaponCat.get(name) };
+  resultName.textContent = name;
+  resultCat.textContent = weaponCat.get(name);
+  resultEl.classList.add('show');
+}
+
+spinBtn.addEventListener('click', spin);
+hub.addEventListener('click', spin);
+rerollBtn.addEventListener('click', spin);
+
+/* ---------- Retire (remove from running) ---------- */
+markUsedBtn.addEventListener('click', () => {
+  if (!lastWinner) return;
+  const { name } = lastWinner;
+  if (state.used[name] === undefined){
+    state.used[name] = 'unranked';
+    save();
+    toast(`“${name}” retired to the ledger.`);
+  }
+  resultEl.classList.remove('show');
+  lastWinner = null;
+  buildCats();
+  refreshWheelState();
+  renderLedger();
+});
+
+/* ---------- Ledger + tier board ---------- */
+function buildTierBoard(){
+  tierboard.innerHTML = '';
+  TIERS.forEach(t => {
+    const row = document.createElement('div');
+    row.className = `tier-row tier-${t}`;
+    row.innerHTML = `<div class="tier-label">${t}</div>
+      <div class="dropzone" data-tier="${t}"></div>`;
+    tierboard.appendChild(row);
+  });
+}
+
+function makeChip(name){
+  const chip = document.createElement('div');
+  chip.className = 'chip';
+  chip.draggable = true;
+  chip.dataset.name = name;
+  chip.innerHTML = `<span class="chip-name">${name}</span>
+    <span class="chip-cat">${weaponCat.get(name)}</span>
+    <button class="chip-return" title="Return to the running" aria-label="Return ${name} to the running">↩</button>`;
+  chip.querySelector('.chip-return').addEventListener('click', (e) => {
+    e.stopPropagation();
+    delete state.used[name];
+    save();
+    toast(`“${name}” returned to the running.`);
+    buildCats();
+    refreshWheelState();
+    renderLedger();
+  });
+  chip.addEventListener('dragstart', e => {
+    chip.classList.add('dragging');
+    e.dataTransfer.setData('text/plain', name);
+    e.dataTransfer.effectAllowed = 'move';
+  });
+  chip.addEventListener('dragend', () => chip.classList.remove('dragging'));
+  return chip;
+}
+
+function renderLedger(){
+  const usedNames = Object.keys(state.used);
+  document.querySelectorAll('.dropzone').forEach(z => z.innerHTML = '');
+  usedNames.forEach(name => {
+    const tier = state.used[name];
+    const zone = tier === 'unranked'
+      ? unrankedZone
+      : document.querySelector(`.dropzone[data-tier="${tier}"]`) || unrankedZone;
+    zone.appendChild(makeChip(name));
+  });
+  const total = ALL_NAMES.filter(passesDLC).length;
+  const done = usedNames.filter(passesDLC).length;
+  const pct = total ? Math.round(done/total*100) : 0;
+  const scope = state.includeDLC ? '' : ' (base game)';
+  progressText.textContent = done === 0
+    ? `No weapons retired yet — ${total} to go${scope}.`
+    : `${done} of ${total} weapons retired (${pct}%)${scope}.`;
+  progressFill.style.width = pct + '%';
+}
+
+/* ---------- Drag & drop wiring (event delegation) ---------- */
+document.addEventListener('dragover', e => {
+  const zone = e.target.closest && e.target.closest('.dropzone');
+  if (zone){ e.preventDefault(); e.dataTransfer.dropEffect='move'; zone.classList.add('over'); }
+});
+document.addEventListener('dragleave', e => {
+  const zone = e.target.closest && e.target.closest('.dropzone');
+  if (zone && !zone.contains(e.relatedTarget)) zone.classList.remove('over');
+});
+document.addEventListener('drop', e => {
+  const zone = e.target.closest && e.target.closest('.dropzone');
+  if (!zone) return;
+  e.preventDefault();
+  zone.classList.remove('over');
+  const name = e.dataTransfer.getData('text/plain');
+  if (!name || state.used[name] === undefined) return;
+  state.used[name] = zone.dataset.tier;
+  save();
+  renderLedger();
+});
+
+/* ---------- Export / Import / Reset ---------- */
+document.getElementById('exportBtn').addEventListener('click', () => {
+  const blob = new Blob([JSON.stringify(state,null,2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const stamp = new Date().toISOString().slice(0,10);
+  a.href = url; a.download = `elden-allweapons-${stamp}.json`;
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+  toast('Run exported.');
+});
+const importFile = document.getElementById('importFile');
+document.getElementById('importBtn').addEventListener('click', () => importFile.click());
+importFile.addEventListener('change', () => {
+  const file = importFile.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try{
+      const parsed = JSON.parse(reader.result);
+      state.used = (parsed && typeof parsed.used === 'object') ? parsed.used : {};
+      state.selected = Array.isArray(parsed.selected) ? parsed.selected : Object.keys(WEAPONS);
+      state.includeDLC = parsed.includeDLC !== false;
+      Object.keys(state.used).forEach(n => { if (!weaponCat.has(n)) delete state.used[n]; });
+      state.selected = state.selected.filter(c => WEAPONS[c]);
+      if (state.selected.length === 0) state.selected = Object.keys(WEAPONS);
+      save(); buildCats(); refreshWheelState(); renderLedger();
+      toast('Run imported.');
+    }catch(err){ toast('Could not read that file.'); }
+    importFile.value = '';
+  };
+  reader.readAsText(file);
+});
+document.getElementById('resetBtn').addEventListener('click', () => {
+  if (!confirm('Reset the entire run? This clears all retired weapons and tier rankings.')) return;
+  state.used = {};
+  save(); buildCats(); refreshWheelState(); renderLedger();
+  resultEl.classList.remove('show');
+  toast('Run reset.');
+});
+
+/* ---------- Toast ---------- */
+let toastTimer;
+function toast(msg){
+  toastEl.textContent = msg;
+  toastEl.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2200);
+}
+
+/* ---------- Init ---------- */
+load();
+buildGroupFilters();
+buildCats();
+buildTierBoard();
+renderLedger();
+refreshWheelState();
+</script>
+</body>
+</html>
