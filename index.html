@@ -960,6 +960,7 @@ function makeChip(name){
     <button class="chip-return" title="Return to the running" aria-label="Return ${name} to the running">↩</button>`;
   chip.querySelector('.chip-return').addEventListener('click', (e) => {
     e.stopPropagation();
+    if (!confirm(`Return “${name}” to the running?\n\nIt will go back on the wheel and lose its tier placement.`)) return;
     delete state.used[name];
     save();
     toast(`“${name}” returned to the running.`);
