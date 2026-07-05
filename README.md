@@ -8,7 +8,7 @@
 armament, retire each weapon as you clear it, and rank your journey on a
 drag-and-drop tier list.
 
-[**▶ Live site**](https://gomatic.github.io/) · [Buy me a coffee ☕](https://buymeacoffee.com/gomatic)
+[**▶ Live site**](https://villusion.github.io/er-weapon-wheel/) · [Buy me a coffee ☕](https://buymeacoffee.com/gomatic)
 
 </div>
 
@@ -41,7 +41,7 @@ grouped into the game's 40 weapon types.
 
 No install, no build, no dependencies — it's a single HTML file.
 
-- **Online:** open the [live site](https://gomatic.github.io/).
+- **Online:** open the [live site](https://villusion.github.io/er-weapon-wheel/).
 - **Offline:** download `index.html` and open it in any modern browser. Keep
   the `wheel-*.png` files next to it if you want the favicon and social preview
   image to work.
@@ -78,10 +78,10 @@ Everything runs client-side in a single file:
 
 ## Deploying
 
-This site is published with **GitHub Pages** as a user site at
-`https://gomatic.github.io/`. For that root URL the files must live in a repo
-named `gomatic.github.io` (owned by the `gomatic` account); then enable
-**Settings → Pages → Source: Deploy from branch → `main` / `root`**.
+This site is published with **GitHub Pages** as a project site at
+`https://villusion.github.io/er-weapon-wheel/`. Push to the `er-weapon-wheel`
+repo, then enable **Settings → Pages → Source: Deploy from branch → `main` /
+`root`**.
 
 Supporting files included for Pages:
 
