@@ -344,7 +344,11 @@
   .result .name{font-family:'Cinzel',serif;font-weight:700;
     font-size:clamp(1.6rem,4.5vw,2.6rem);color:var(--gold-bright);
     margin:0.5rem 0 0.25rem;text-shadow:0 0 24px rgba(240,217,138,0.4)}
-  .result .cat-tag{font-style:italic;font-size:1.05rem;color:var(--ash-dim);margin-bottom:1rem}
+  .result .cat-tag{font-style:italic;font-size:1.05rem;color:var(--ash-dim);margin-bottom:0.45rem}
+  .wiki-link{display:inline-block;font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.14em;
+    text-transform:uppercase;color:var(--gold-deep);text-decoration:none;
+    border-bottom:1px solid transparent;margin-bottom:1rem;transition:color .15s,border-color .15s}
+  .wiki-link:hover{color:var(--gold-bright);border-color:var(--gold-deep)}
   .result-actions{display:flex;gap:0.6rem;justify-content:center;flex-wrap:wrap}
   .btn{
     font-family:'Cinzel',serif;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;
@@ -508,6 +512,7 @@
     <img class="result-img" id="resultImg" alt="" draggable="false" hidden>
     <div class="name" id="resultName"></div>
     <div class="cat-tag" id="resultCat"></div>
+    <a class="wiki-link" id="wikiLink" target="_blank" rel="noopener noreferrer">Wiki &amp; where to find it ↗</a>
     <div class="result-actions">
       <button class="btn btn-primary" id="markUsed">Retire this weapon ✦</button>
       <button class="btn btn-ghost" id="rerollBtn">Turn again</button>
@@ -632,6 +637,9 @@ const WEAPON_ICONID = {"Academy Glintstone Staff":11212, "Alabaster Lord's Sword
 // Small 160px icons (MENU_ItemIcon) for chips; high-res 1024px (MENU_Knowledge) for the big result image.
 const iconPath = name => WEAPON_ICONID[name] ? `images/weapons/MENU_ItemIcon_${WEAPON_ICONID[name]}.png` : '';
 const iconPathBig = name => WEAPON_ICONID[name] ? `images/result/${WEAPON_ICONID[name]}.png` : '';
+// Deep-link to the weapon's Elden Ring wiki page (includes a "Where to Find" section).
+// Fextralife page titles match the in-game name; only spaces need to become "+".
+const wikiUrl = name => 'https://eldenring.wiki.fextralife.com/' + name.trim().replace(/ /g,'+');
 
 /* ---------- DLC weapons (from Shadow of the Erdtree) ---------- */
 const DLC_WEAPONS = new Set(["Alabaster Lord's Sword","Ancient Meteoric Ore Greatsword","Ansbach's Longbow","Anvil Hammer","Backhand Blade","Barbed Staff-Spear","Beast Claw","Black Steel Greathammer","Black Steel Twinblade","Bloodfiend's Arm","Bloodfiend's Fork","Bloodfiend's Sacred Spear","Bone Bow","Bonny Butchering Knife","Carian Sorcery Sword","Carian Thrusting Shield","Chilling Perfume Bottle","Claws of Night","Curseblade's Cirque","Dancing Blade of Ranah","Dane's Footwork","Deadly Poison Perfume Bottle","Death Knight's Longhaft Axe","Death Knight's Twin Axes","Devonia's Hammer","Dragon-Hunter's Great Katana","Dryleaf Arts","Dryleaf Seal","Dueling Shield","Euporia","Falx","Fire Knight's Greatsword","Fire Knight's Seal","Fire Knight's Shortsword","Firespark Perfume Bottle","Flowerstone Gavel","Forked-Tongue Hatchet","Frenzyflame Perfume Bottle","Freyja's Greatsword","Gazing Finger","Golem Fist","Great Katana","Greatsword of Damnation","Greatsword of Radahn (Light)","Greatsword of Radahn (Lord)","Greatsword of Solitude","Horned Warrior's Greatsword","Horned Warrior's Sword","Igon's Greatbow","Lamenting Visage","Leda's Sword","Lightning Perfume Bottle","Lizard Greatsword","Madding Hand","Main-gauche","Maternal Staff","Messmer Soldier's Axe","Messmer Soldier's Spear","Milady","Moonrithyll's Knight Sword","Nanaya's Torch","Obsidian Lamina","Pata","Poisoned Hand","Poleblade of the Bud","Putrescence Cleaver","Queelign's Greatsword","Rabbath's Cannon","Rakshasa's Great Katana","Red Bear's Claw","Rellana's Twin Blades","Repeating Crossbow","Serpent Flail","Shadow Sunflower Blossom","Smithscript Axe","Smithscript Cirque","Smithscript Dagger","Smithscript Greathammer","Smithscript Spear","Spear of the Impaler","Spiraltree Seal","Spirit Glaive","Spirit Sword","Spread Crossbow","Staff of the Great Beyond","Star-Lined Sword","Stone-Sheathed Sword","Swift Spear","Sword Lance","Sword of Darkness","Sword of Light","Sword of Night","Thiollier's Hidden Needle","Tooth Whip","Velvet Sword of St. Trina"]);
@@ -688,6 +696,7 @@ const wheelWrap = document.getElementById('wheelWrap');
 const resultEl = document.getElementById('result');
 const resultName = document.getElementById('resultName');
 const resultImg = document.getElementById('resultImg');
+const wikiLink = document.getElementById('wikiLink');
 const resultCat = document.getElementById('resultCat');
 const markUsedBtn = document.getElementById('markUsed');
 const rerollBtn = document.getElementById('rerollBtn');
@@ -916,6 +925,7 @@ function finish(winner){
   const ip = iconPathBig(name);
   if (ip){ resultImg.src = ip; resultImg.alt = name; resultImg.hidden = false; }
   else { resultImg.hidden = true; resultImg.removeAttribute('src'); }
+  wikiLink.href = wikiUrl(name);
   resultEl.classList.add('show');
 }
 
