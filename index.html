@@ -88,6 +88,27 @@
   "image": "https://villusion.github.io/er-weapon-wheel/wheel-og.png"
 }
 </script>
+<!-- FAQ structured data (must mirror the visible FAQ text on the page) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What is Grace of the Wheel?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Grace of the Wheel is a free random weapon generator for Elden Ring all-weapons runs. Spin the wheel to be assigned a random armament, retire each weapon as you clear it so it is never rolled twice, and rank your favourites on a drag-and-drop tier list." } },
+    { "@type": "Question", "name": "What is an all-weapons run in Elden Ring?",
+      "acceptedAnswer": { "@type": "Answer", "text": "An all-weapons run is a self-imposed challenge where you beat the game using every weapon at least once. This tool tracks that run: it picks your next weapon at random and keeps count of how many of the 402 armaments you have left." } },
+    { "@type": "Question", "name": "How many weapons does the wheel include?",
+      "acceptedAnswer": { "@type": "Answer", "text": "All 402 weapons from the base game and the Shadow of the Erdtree DLC, grouped into the game's 40 weapon categories — from daggers and katanas to colossal weapons, bows, glintstone staves and sacred seals." } },
+    { "@type": "Question", "name": "Can I roll from specific weapon categories?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Tick any combination of categories, or use the quick filters for Melee, Ranged, Catalysts, Shields and DLC. The wheel then rolls only from the weapons you have selected." } },
+    { "@type": "Question", "name": "Does it include Shadow of the Erdtree (DLC) weapons?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — every DLC weapon is included, and a single DLC toggle lets you include or exclude them if you only want a base-game run." } },
+    { "@type": "Question", "name": "Is my progress saved?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Your run is saved automatically in your browser, so retired weapons and tier rankings persist between visits. You can also export a backup file and import it on another device." } }
+  ]
+}
+</script>
 <!-- Favicon: golden wheel emblem, inlined so this file stays self-contained.
      Crisp SVG for modern browsers, PNG fallback for older ones. The matching
      wheel-512.png / wheel-180.png files (delivered alongside) are used for
@@ -460,6 +481,23 @@
   }
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
+  /* ---- FAQ ---- */
+  .faq{width:100%;max-width:760px;margin:3.4rem auto 0}
+  .faq h2{font-family:'Cinzel',serif;font-weight:600;font-size:clamp(1.1rem,3vw,1.5rem);
+    color:var(--gold-bright);letter-spacing:0.06em;text-align:center;margin-bottom:1.4rem}
+  .faq details{border:1px solid var(--panel-edge);border-radius:2px;margin-bottom:0.6rem;
+    background:linear-gradient(180deg,rgba(30,23,13,0.5),rgba(16,12,8,0.5));overflow:hidden}
+  .faq summary{cursor:pointer;list-style:none;padding:0.85rem 1.1rem;
+    font-family:'Cinzel',serif;font-size:0.82rem;letter-spacing:0.04em;color:var(--gold);
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    transition:color .15s,background .15s}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:'+';font-size:1.2rem;line-height:1;color:var(--gold-deep);transition:color .15s}
+  .faq details[open] summary{color:var(--gold-bright);background:rgba(201,162,39,0.06)}
+  .faq details[open] summary::after{content:'−';color:var(--gold-bright)}
+  .faq summary:hover{color:var(--gold-bright)}
+  .faq p{margin:0;padding:0 1.1rem 1rem;font-size:1.05rem;line-height:1.5;color:var(--ash)}
+
   footer{margin-top:2.2rem;padding-top:0;font-size:0.9rem;color:var(--ash-dim);
     font-style:italic;text-align:center;max-width:56ch;line-height:1.4}
   footer code{font-family:ui-monospace,monospace;font-style:normal;font-size:0.82em;
@@ -540,6 +578,40 @@
       <h3>Retired — awaiting judgement</h3>
       <div class="dropzone" id="unranked" data-tier="unranked"></div>
     </div>
+  </section>
+
+  <section class="faq" aria-labelledby="faqHeading">
+    <h2 id="faqHeading">Frequently asked questions</h2>
+
+    <details>
+      <summary>What is Grace of the Wheel?</summary>
+      <p>Grace of the Wheel is a free random weapon generator for Elden Ring all-weapons runs. Spin the wheel to be assigned a random armament, retire each weapon as you clear it so it is never rolled twice, and rank your favourites on a drag-and-drop tier list.</p>
+    </details>
+
+    <details>
+      <summary>What is an all-weapons run in Elden Ring?</summary>
+      <p>An all-weapons run is a self-imposed challenge where you beat the game using every weapon at least once. This tool tracks that run: it picks your next weapon at random and keeps count of how many of the 402 armaments you have left.</p>
+    </details>
+
+    <details>
+      <summary>How many weapons does the wheel include?</summary>
+      <p>All 402 weapons from the base game and the Shadow of the Erdtree DLC, grouped into the game's 40 weapon categories — from daggers and katanas to colossal weapons, bows, glintstone staves and sacred seals.</p>
+    </details>
+
+    <details>
+      <summary>Can I roll from specific weapon categories?</summary>
+      <p>Yes. Tick any combination of categories, or use the quick filters for Melee, Ranged, Catalysts, Shields and DLC. The wheel then rolls only from the weapons you have selected.</p>
+    </details>
+
+    <details>
+      <summary>Does it include Shadow of the Erdtree (DLC) weapons?</summary>
+      <p>Yes — every DLC weapon is included, and a single DLC toggle lets you include or exclude them if you only want a base-game run.</p>
+    </details>
+
+    <details>
+      <summary>Is my progress saved?</summary>
+      <p>Your run is saved automatically in your browser, so retired weapons and tier rankings persist between visits. You can also export a backup file and import it on another device.</p>
+    </details>
   </section>
 
   <!-- =========================================================================
