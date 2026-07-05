@@ -100,7 +100,6 @@ If you host it elsewhere, update the canonical, `og:url`, `og:image`, and
 ## Support
 
 If this helped your run, you can [buy me a coffee ☕](https://buymeacoffee.com/gomatic).
-Feature ideas are welcome via the in-app "Request a feature" button.
 
 ## License
 
