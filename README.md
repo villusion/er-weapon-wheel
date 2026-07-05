@@ -8,7 +8,7 @@
 armament, retire each weapon as you clear it, and rank your journey on a
 drag-and-drop tier list.
 
-[**▶ Live site**](https://villusion.github.io/er-weapon-wheel/) · [Buy me a coffee ☕](https://buymeacoffee.com/gomatic)
+[**▶ Live site**](https://gomatic.github.io/) · [Buy me a coffee ☕](https://buymeacoffee.com/gomatic)
 
 </div>
 
@@ -41,7 +41,7 @@ grouped into the game's 40 weapon types.
 
 No install, no build, no dependencies — it's a single HTML file.
 
-- **Online:** open the [live site](https://villusion.github.io/er-weapon-wheel/).
+- **Online:** open the [live site](https://gomatic.github.io/).
 - **Offline:** download `index.html` and open it in any modern browser. Keep
   the `wheel-*.png` files next to it if you want the favicon and social preview
   image to work.
@@ -78,10 +78,21 @@ Everything runs client-side in a single file:
 
 ## Deploying
 
-The site is served from GitHub Pages. To publish your own copy: push to a
-repo, then **Settings → Pages → Source: Deploy from branch → `main` / `root`**.
-Update the canonical and social-preview URLs in the `<head>` of `index.html`
-if you host it somewhere else.
+This site is published with **GitHub Pages** as a user site at
+`https://gomatic.github.io/`. For that root URL the files must live in a repo
+named `gomatic.github.io` (owned by the `gomatic` account); then enable
+**Settings → Pages → Source: Deploy from branch → `main` / `root`**.
+
+Supporting files included for Pages:
+
+- `.nojekyll` — serve files as-is (skip the Jekyll build step)
+- `robots.txt` — allow crawlers and point to the sitemap
+- `sitemap.xml` — the canonical URL for search engines
+- `404.html` — a themed not-found page
+
+If you host it elsewhere, update the canonical, `og:url`, `og:image`, and
+`twitter:image` URLs in the `<head>` of `index.html`, plus `robots.txt` and
+`sitemap.xml`.
 
 ## Support
 
